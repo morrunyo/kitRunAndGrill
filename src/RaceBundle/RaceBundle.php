@@ -1,9 +1,9 @@
 <?php
 
-namespace CarreraBundle;
+namespace RaceBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class CarreraBundle extends Bundle
+class RaceBundle extends Bundle
 {
 }

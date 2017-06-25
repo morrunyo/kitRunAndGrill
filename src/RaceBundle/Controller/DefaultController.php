@@ -1,6 +1,6 @@
 <?php
 
-namespace CarreraBundle\Controller;
+namespace RaceBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('CarreraBundle:Default:index.html.twig');
+        return $this->render('RaceBundle:Default:index.html.twig');
     }
 }

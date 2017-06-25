@@ -7,22 +7,6 @@ race_index:
     path: /race/index
     defaults: { _controller: RaceBundle:Race:index }
 
-race_add:
-    path: /race/add
-    defaults: { _controller: RaceBundle:Race:add }
-    
-race_edit:
-    path: /race/edit/{id}
-    defaults: { _controller: RaceBundle:Race:edit }
-    
-race_delete:
-    path: /race/delete/{id}
-    defaults: { _controller: RaceBundle:Race:delete }
-    
-race_view:
-    path: /race/view/{id}
-    defaults: { _controller: RaceBundle:Race:view }
-    
 race_activate:
     path: /race/activate/{id}
     defaults: { _controller: RaceBundle:Race:activate }    

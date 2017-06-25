@@ -135,45 +135,4 @@ class Race
     {
         $this->$runners= new ArrayCollection();
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->runners = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add runner
-     *
-     * @param \RaceBundle\Entity\Runner $runner
-     *
-     * @return Race
-     */
-    public function addRunner(\RaceBundle\Entity\Runner $runner)
-    {
-        $this->runners[] = $runner;
-
-        return $this;
-    }
-
-    /**
-     * Remove runner
-     *
-     * @param \RaceBundle\Entity\Runner $runner
-     */
-    public function removeRunner(\RaceBundle\Entity\Runner $runner)
-    {
-        $this->runners->removeElement($runner);
-    }
-
-    /**
-     * Get runners
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRunners()
-    {
-        return $this->runners;
-    }
 }

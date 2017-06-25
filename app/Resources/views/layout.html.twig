@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Kit de Supervivencia Run And Grill{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('public/css/style.css') }}" />
+            <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}" />
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        <div class="bottom-footer">
+            Powered by Mateo Soto
+        </div>
+        {% block javascripts %}
+        <script src="{{ asset('public/js/bootstrap.min.js') }}" />
+        <script src="{{ asset('public/js/jquery-3.2.1.min.js') }}" />
+        {% endblock %}
+    </body>
+</html>

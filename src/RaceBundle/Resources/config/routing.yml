@@ -12,13 +12,17 @@ race_add:
     defaults: { _controller: RaceBundle:Race:add }
     
 race_edit:
-    path: /race/edit/{idCarrera}
+    path: /race/edit/{id}
     defaults: { _controller: RaceBundle:Race:edit }
     
 race_delete:
-    path: /race/delete/{idCarrera}
+    path: /race/delete/{id}
     defaults: { _controller: RaceBundle:Race:delete }
     
 race_view:
-    path: /race/view/{idCarrera}
-    defaults: { _controller: RaceBundle:Race:view }    
+    path: /race/view/{id}
+    defaults: { _controller: RaceBundle:Race:view }
+    
+race_activate:
+    path: /race/activate/{id}
+    defaults: { _controller: RaceBundle:Race:activate }    

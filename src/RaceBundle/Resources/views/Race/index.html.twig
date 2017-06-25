@@ -1,0 +1,34 @@
+{% extends('layout.html.twig') %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="col-md-12">
+			<div class="page-header margin-none">
+				<h2 class="padding-none"> Races</h2>
+			</div>
+			<div class="table-responsive">
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Started</th>
+        <th>Active</th>
+        <th>Activate</th>
+    </tr>
+    {% for race in races %}
+    <tr>
+        <td>{{race.id}}</td>
+        <td>{{race.name}}</td>
+        <td>{{race.startedAt|date('d-m-Y H:i')}}</td>
+        <td>{{race.isActive}}</td>
+        <td class="actions">
+            <a href={{path('race_activate',{id: race.id})}} class="btn btn-sn btn-info">Activate</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</div>
+</div>
+{%endblock %}

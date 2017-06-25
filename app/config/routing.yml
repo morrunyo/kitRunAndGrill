@@ -2,10 +2,6 @@ race:
     resource: "@RaceBundle/Resources/config/routing.yml"
     prefix:   /
 
-carrera:
-    resource: "@CarreraBundle/Resources/config/routing.yml"
-    prefix:   /
-
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

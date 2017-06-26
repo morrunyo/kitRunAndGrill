@@ -1,7 +1,9 @@
+homepage:
+    path:     /
+    defaults: { _controller: RaceBundle:Race:index }
+
 race:
     resource: "@RaceBundle/Resources/config/routing.yml"
     prefix:   /
 
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+

@@ -1,6 +1,6 @@
 race_homepage:
-    path:     /
-    defaults: { _controller: RaceBundle:Default:index }
+    path:     /race
+    defaults: { _controller: RaceBundle:Race:index }
 
     
 race_index:

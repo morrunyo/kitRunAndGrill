@@ -1,0 +1,37 @@
+{% extends('layout.html.twig') %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="col-md-12">
+			<div class="page-header margin-none">
+				<h2 class="padding-none">{{ race.name }}'s Runners <br /></h2>
+				<h3 class="padding-none">Started at: {{race.startedAt|date('d-m-Y H:i:s')}}</h3>
+			</div>
+			<div class="table-responsive">
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Position</th>
+        <th>Id</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Finished</th>
+        <th>Chrono</th>
+    </tr>
+    {% set index = 1 %}
+    {% for runner in runners %}
+    <tr>
+        <td>{{index}}</td> 
+        <td>{{runner.id}}</td>
+        <td>{{runner.code}}</td>
+        <td>{{runner.name}}</td>
+        <td>{{runner.finishedAt|date('d-m-Y H:i:s')}}</td>
+        <td>{{runner.chronoString()}}</td>
+    </tr>
+    {% set index = index+1 %}
+    {% endfor %}
+</table>
+</div>
+</div>
+</div>
+{%endblock %}

@@ -154,4 +154,25 @@ class Runner
     {
         return $this->race;
     }
+    
+    /**
+     * Calculate chrono
+     *
+     * @return \DateInterval
+     */
+    public function chrono()
+    {
+        return $this->race->getStartedAt()->diff($this->finishedAt);
+    }
+    
+    /**
+     * Calculate chrono in String format
+     *
+     * @return string
+     */
+    public function chronoString()
+    {
+        $interval = $this->chrono();
+        return $interval->format('%H:%I:%S');
+    }
 }

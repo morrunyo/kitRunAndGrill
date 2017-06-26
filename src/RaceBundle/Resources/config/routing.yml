@@ -9,4 +9,12 @@ race_index:
 
 race_activate:
     path: /race/activate/{id}
-    defaults: { _controller: RaceBundle:Race:activate }    
+    defaults: { _controller: RaceBundle:Race:activate }
+    
+runner_index:
+    path: /runner/index
+    defaults: { _controller: RaceBundle:Runner:index }
+
+runner_chrono:
+    path: /runner/chrono/{code}
+    defaults: { _controller: RaceBundle:Runner:chrono }

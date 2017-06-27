@@ -20,16 +20,14 @@ class RaceController extends Controller
         $races = $this->getDoctrine()->getRepository('RaceBundle:Race')->findAll();
         foreach ($races as $race)
         {
-            if ($race->getIsActive())
-            {
-                $race->setIsActive(false);
-                $em->persist($race);
-            }
-            elseif ($race->getId()==$id)
+            if ($race->getId()==$id)
             {   
                 $race->setIsActive(true);
-                $em->persist($race);
             }
+            else{
+                $race->setIsActive(false);
+            }
+            $em->persist($race);
             $em->flush();
         }
         return $this->render('RaceBundle:Race:index.html.twig',$arrayName = array('races' => $races));
@@ -39,18 +37,23 @@ class RaceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $race = $this->getDoctrine()->getRepository('RaceBundle:Race')->findOneById($id);
+        $races = $this->getDoctrine()->getRepository('RaceBundle:Race')->findAll();
         if ($race==NULL)
         {
             $race = new Race();
             $race->setName("");
             $race->setIsActive(false);
+            $race->setStartedAt(new \DateTime('now'));
+            $em->persist($race);
+            $em->flush();
         }
-        $race->setStartedAt(new \DateTime('now'));
-        $em->persist($race);
-        $em->flush();
-        $this->activateAction($race->getId());
-        
+        else{
+            $race->setStartedAt(new \DateTime('now'));
+            $em->persist($race);
+            $em->flush(); 
+        }
         $races = $this->getDoctrine()->getRepository('RaceBundle:Race')->findAll();
+        $this->activateAction($race->getId());
         return $this->render('RaceBundle:Race:index.html.twig',$arrayName = array('races' => $races));
     }
 }

@@ -14,7 +14,7 @@
         <th>Name</th>
         <th>Started</th>
         <th>Active</th>
-        <th>Activate</th>
+        <th>Actions</th>
     </tr>
     {% for race in races %}
     <tr>
@@ -24,6 +24,7 @@
         <td>{{race.isActive}}</td>
         <td class="actions">
             <a href={{path('race_activate',{id: race.id})}} class="btn btn-sn btn-info">Activate</a>
+            <a href={{path('race_start',{id: race.id})}} class="btn btn-sn btn-primary">Start</a>
         </td>
     </tr>
     {% endfor %}

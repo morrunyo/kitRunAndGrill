@@ -104,7 +104,7 @@ class Race
      */
     public function getStartedAt()
     {
-        return $this->startedAt;
+        return $this->startedAt;;
     }
 
     /**

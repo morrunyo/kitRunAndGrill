@@ -34,4 +34,23 @@ class RaceController extends Controller
         }
         return $this->render('RaceBundle:Race:index.html.twig',$arrayName = array('races' => $races));
     }
+    
+    public function startAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $race = $this->getDoctrine()->getRepository('RaceBundle:Race')->findOneById($id);
+        if ($race==NULL)
+        {
+            $race = new Race();
+            $race->setName("");
+            $race->setIsActive(false);
+        }
+        $race->setStartedAt(new \DateTime('now'));
+        $em->persist($race);
+        $em->flush();
+        $this->activateAction($race->getId());
+        
+        $races = $this->getDoctrine()->getRepository('RaceBundle:Race')->findAll();
+        return $this->render('RaceBundle:Race:index.html.twig',$arrayName = array('races' => $races));
+    }
 }

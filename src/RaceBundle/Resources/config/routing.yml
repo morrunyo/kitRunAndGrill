@@ -11,6 +11,10 @@ race_activate:
     path: /race/activate/{id}
     defaults: { _controller: RaceBundle:Race:activate }
     
+race_start:
+    path: /race/start/{id}
+    defaults: { _controller: RaceBundle:Race:start }
+    
 runner_index:
     path: /runner/index
     defaults: { _controller: RaceBundle:Runner:index }

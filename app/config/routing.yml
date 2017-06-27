@@ -1,6 +1,6 @@
 homepage:
     path:     /
-    defaults: { _controller: RaceBundle:Race:index }
+    defaults: { _controller: AppBundle:Default:index }
 
 race:
     resource: "@RaceBundle/Resources/config/routing.yml"

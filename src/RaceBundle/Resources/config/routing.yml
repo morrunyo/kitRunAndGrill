@@ -6,7 +6,25 @@ race_homepage:
 race_index:
     path: /race/index
     defaults: { _controller: RaceBundle:Race:index }
+    
+race_add:
+    path: /race/add
+    defaults: { _controller: RaceBundle:Race:add }
 
+race_create:
+    path: /race/create
+    defaults: { _controller: RaceBundle:Race:create }
+    methods: [POST]
+    
+race_edit:
+    path: /race/edit/{id}
+    defaults: { _controller: RaceBundle:Race:edit }
+    
+race_update:
+    path: /race/update/{id}
+    defaults: { _controller: RaceBundle:Race:update }
+    methods:  [POST, PUT]
+    
 race_activate:
     path: /race/activate/{id}
     defaults: { _controller: RaceBundle:Race:activate }

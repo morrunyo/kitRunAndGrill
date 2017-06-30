@@ -1,0 +1,3 @@
+grill_homepage:
+    path:     /
+    defaults: { _controller: GrillBundle:Default:index }

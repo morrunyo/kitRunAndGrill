@@ -131,16 +131,12 @@ class Race
         return $this->isActive;
     }
     
-    public function __construc()
-    {
-        $this->$runners= new ArrayCollection();
-    }
-    /**
+     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->runners = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->$runners= new ArrayCollection();
     }
 
     /**

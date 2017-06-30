@@ -36,6 +36,19 @@ race_start:
 runner_index:
     path: /runner/index
     defaults: { _controller: RaceBundle:Runner:index }
+    
+runner_edit:
+    path: /runner/edit
+    defaults: { _controller: RaceBundle:Runner:edit }
+    
+runner_update:
+    path: /runner/update
+    defaults: { _controller: RaceBundle:Runner:update }
+    methods:  [POST, PUT]
+    
+race_activate:
+    path: /race/activate/{id}
+    defaults: { _controller: RaceBundle:Race:activate }
 
 runner_chrono:
     path: /runner/chrono/{code}

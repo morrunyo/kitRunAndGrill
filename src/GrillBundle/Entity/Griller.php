@@ -12,7 +12,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="GrillBundle\Repository\GrillerRepository")
  */
 class Griller
-{
+     /**
+     * @ORM\OneToMany(targetEntity="images", mappedBy="Griller")
+     */
+    protected $images;
+
     /**
      * @ORM\ManyToOne(targetEntity="Grill",inversedBy="grillers")
      * @ORM\JoinColumn(name="grill_id", referencedColumnName="id", onDelete="CASCADE")

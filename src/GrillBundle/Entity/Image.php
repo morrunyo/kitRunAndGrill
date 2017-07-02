@@ -12,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Image
 {
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Griller",inversedBy="images")
+     * @ORM\JoinColumn(name="griller_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    protected $griller;
+    
     /**
      * @var int
      *

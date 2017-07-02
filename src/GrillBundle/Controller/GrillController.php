@@ -8,6 +8,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class GrillController extends Controller
 {
     /**
+     * @Route("/index")
+     */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $grills = $this->getDoctrine()->getRepository('GrillBundle:Grill')->findAll();
+        return $this->render('GrillBundle:Grill:index.html.twig',$arrayName = array('grills' => $grills));
+    }
+    
+    /**
      * @Route("/add")
      */
     public function addAction()
@@ -16,15 +26,29 @@ class GrillController extends Controller
             // ...
         ));
     }
+    
+    
 
     /**
-     * @Route("/activate")
+     * @Route("/activate/{id}")
      */
-    public function activateAction()
+    public function activateAction($id)
     {
-        return $this->render('GrillBundle:Grill:activate.html.twig', array(
-            // ...
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $grills = $this->getDoctrine()->getRepository('GrillBundle:Grill')->findAll();
+        foreach ($grills as $grill)
+        {
+            if ($grill->getId()==$id)
+            {   
+                $grill->setIsActive(true);
+            }
+            else{
+                $grill->setIsActive(false);
+            }
+            $em->persist($grill);
+            $em->flush();
+        }
+        return $this->render('GrillBundle:Grill:index.html.twig',$arrayName = array('grills' => $grills));
     }
 
 }

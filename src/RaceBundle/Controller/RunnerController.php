@@ -52,12 +52,12 @@ class RunnerController extends Controller
             $runner = $this->getDoctrine()->getRepository('RaceBundle:Runner')->findOneBy(array('code' => $form->get('code')->getData()));
             $runner->setName($form->get('name')->getData());
             $em->flush();
-            $successMessage = 'The race has been modified.';
+            $successMessage = 'The runer has been modified.';
             $this->addFlash('mensaje', $successMessage);
             return $this->redirectToRoute('runner_index');
         }
-        //return $this->render('RaceBundle:Race:edit.html.twig', array('race' => $race, 'form' => $form->createView()));
-        return new Symfony\Component\HttpFoundation\Response("Error");
+        return $this->render('RaceBundle:Race:edit.html.twig', array('race' => $race, 'form' => $form->createView()));
+        //return new Symfony\Component\HttpFoundation\Response("Error");
     }
 
 

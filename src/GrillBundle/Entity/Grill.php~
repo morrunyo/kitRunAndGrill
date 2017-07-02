@@ -41,6 +41,12 @@ class Grill
      */
     private $date;
 
+/**
+     * @var bool
+     *
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
 
     /**
      * Get id
@@ -107,5 +113,38 @@ class Grill
     {
         $this->$runners= new ArrayCollection();
     }
-}
 
+    /**
+     * Add griller
+     *
+     * @param \GrillBundle\Entity\Griller $griller
+     *
+     * @return Grill
+     */
+    public function addGriller(\GrillBundle\Entity\Griller $griller)
+    {
+        $this->grillers[] = $griller;
+
+        return $this;
+    }
+
+    /**
+     * Remove griller
+     *
+     * @param \GrillBundle\Entity\Griller $griller
+     */
+    public function removeGriller(\GrillBundle\Entity\Griller $griller)
+    {
+        $this->grillers->removeElement($griller);
+    }
+
+    /**
+     * Get grillers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGrillers()
+    {
+        return $this->grillers;
+    }
+}

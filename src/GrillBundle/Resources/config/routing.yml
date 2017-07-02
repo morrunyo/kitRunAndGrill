@@ -1,3 +1,28 @@
-grill_homepage:
-    path:     /
-    defaults: { _controller: GrillBundle:Default:index }
+grill_index:
+    path: /grill/index
+    defaults: { _controller: GrillBundle:Grill:index }
+
+grill_add:
+    path: /grill/add
+    defaults: { _controller: GrillBundle:Grill:add }
+
+grill_activate:
+    path: /grill/activate/{id}
+    defaults: { _controller: GrillBundle:Grill:activate }
+    
+griller_edit:
+    path: /griller/edit/{id}
+    defaults: { _controller: GrillBundle:Griller:edit }
+    
+griller_update:
+    path: /griller/update/{id}
+    defaults: { _controller: GrillBundle:Griller:update }
+    methods: [POST,PUT]
+    
+griller_restart:
+    path: /griller/restart
+    defaults: { _controller: GrillBundle:Griller:restart }
+    
+griller_index:
+    path: /griller/index
+    defaults: { _controller: GrillBundle:Griller:index }

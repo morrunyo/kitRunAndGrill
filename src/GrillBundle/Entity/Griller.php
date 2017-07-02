@@ -3,6 +3,7 @@
 namespace GrillBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Griller
@@ -16,7 +17,7 @@ class Griller
      * @ORM\ManyToOne(targetEntity="Grill",inversedBy="grillers")
      * @ORM\JoinColumn(name="grill_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    protected $race;
+    protected $grill;
     
     /**
      * @var int
@@ -45,6 +46,9 @@ class Griller
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=255)
+     *
+     * @Assert\NotBlank(message="Please, insert a JPG or PNG photo")
+     * @Assert\File(mimeTypes={ "image/jpeg","image/png" })
      */
     private $photo;
 
@@ -169,9 +173,9 @@ class Griller
      *
      * @return Griller
      */
-    public function setRace(\GrillBundle\Entity\Grill $race = null)
+    public function setGrill(\GrillBundle\Entity\Grill $grill = null)
     {
-        $this->race = $race;
+        $this->grill = $grill;
 
         return $this;
     }
@@ -181,8 +185,9 @@ class Griller
      *
      * @return \GrillBundle\Entity\Grill
      */
-    public function getRace()
+    public function getGrill()
     {
-        return $this->race;
+        return $this->grill;
     }
+    
 }

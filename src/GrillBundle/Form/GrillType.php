@@ -1,20 +1,19 @@
 <?php
 
-namespace RaceBundle\Form;
+namespace GrillBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class RunnerType extends AbstractType
+class GrillType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('code')->add('name')->add('save', SubmitType::class, array('label' => 'Save runner'));
+        $builder->add('name')->add('date')->add('isActive');
     }
     
     /**
@@ -23,7 +22,7 @@ class RunnerType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'RaceBundle\Entity\Runner'
+            'data_class' => 'GrillBundle\Entity\Grill'
         ));
     }
 
@@ -32,7 +31,7 @@ class RunnerType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'racebundle_runner';
+        return 'grillbundle_grill';
     }
 
 

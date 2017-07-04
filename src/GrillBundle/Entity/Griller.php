@@ -12,8 +12,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="GrillBundle\Repository\GrillerRepository")
  */
 class Griller
+{
      /**
-     * @ORM\OneToMany(targetEntity="images", mappedBy="Griller")
+     * @ORM\OneToMany(targetEntity="image", mappedBy="Griller")
      */
     protected $images;
 
@@ -194,4 +195,45 @@ class Griller
         return $this->grill;
     }
     
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add image
+     *
+     * @param \GrillBundle\Entity\images $image
+     *
+     * @return Griller
+     */
+    public function addImage(\GrillBundle\Entity\images $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \GrillBundle\Entity\images $image
+     */
+    public function removeImage(\GrillBundle\Entity\images $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
 }

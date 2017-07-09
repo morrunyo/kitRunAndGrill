@@ -6,6 +6,7 @@ use RyGBundle\Entity\Edition;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use \Datetime;
 
 /**
  * Edition controller.
@@ -132,5 +133,49 @@ class EditionController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    
+    /**
+     * Activate Edition
+     *
+     * @Route("/{id}/activate", name="edition_activate")
+     * 
+     */
+    public function activateAction(Edition $edition)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $editions = $em->getRepository('RyGBundle:Edition')->findAll();
+        
+        foreach ($editions as $e)
+        {
+            if ($e->getId() == $edition->getId())
+            {
+                $e->setIsActive(true);
+            }
+            else
+            {
+                $e->setIsActive(false);
+            }
+            $em->persist($e);
+            $em->flush();
+        }
+        return $this->redirectToRoute('edition_index');
+    }
+    
+    /**
+     * Start Edition
+     *
+     * @Route("/{id}/start", name="edition_start")
+     * 
+     */
+    public function startAction(Edition $edition)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $edition->setStartedAt(new DateTime());
+        $em->persist($edition);
+        $em->flush();
+        
+        return $this->redirectToRoute('edition_index');
     }
 }

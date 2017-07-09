@@ -5,15 +5,15 @@ namespace RyGBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Runner
+ * Griller
  *
- * @ORM\Table(name="runners")
- * @ORM\Entity(repositoryClass="RyGBundle\Repository\RunnerRepository")
+ * @ORM\Table(name="griller")
+ * @ORM\Entity(repositoryClass="RyGBundle\Repository\GrillerRepository")
  */
-class Runner
+class Griller
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Edition", inversedBy="runners")
+     * @ORM\ManyToOne(targetEntity="Edition", inversedBy="grillers")
      * @ORM\JoinColumn(name="edition_id", referencedColumnName="id")
      */
     private $edition;
@@ -35,18 +35,25 @@ class Runner
     private $name;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="number", type="integer", nullable=true)
+     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      */
-    private $number;
+    private $photo;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="finished_at", type="datetime", nullable=true)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
-    private $finishedAt;
+    private $email;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="phone", type="integer", nullable=true)
+     */
+    private $phone;
 
 
     /**
@@ -64,7 +71,7 @@ class Runner
      *
      * @param string $name
      *
-     * @return Runner
+     * @return Griller
      */
     public function setName($name)
     {
@@ -84,51 +91,75 @@ class Runner
     }
 
     /**
-     * Set number
+     * Set photo
      *
-     * @param integer $number
+     * @param string $photo
      *
-     * @return Runner
+     * @return Griller
      */
-    public function setNumber($number)
+    public function setPhoto($photo)
     {
-        $this->number = $number;
+        $this->photo = $photo;
 
         return $this;
     }
 
     /**
-     * Get number
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Griller
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param integer $phone
+     *
+     * @return Griller
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
      *
      * @return int
      */
-    public function getNumber()
+    public function getPhone()
     {
-        return $this->number;
-    }
-
-    /**
-     * Set finishedAt
-     *
-     * @param \DateTime $finishedAt
-     *
-     * @return Runner
-     */
-    public function setFinishedAt($finishedAt)
-    {
-        $this->finishedAt = $finishedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get finishedAt
-     *
-     * @return \DateTime
-     */
-    public function getFinishedAt()
-    {
-        return $this->finishedAt;
+        return $this->phone;
     }
 
     /**
@@ -136,7 +167,7 @@ class Runner
      *
      * @param \RyGBundle\Entity\Edition $edition
      *
-     * @return Runner
+     * @return Griller
      */
     public function setEdition(\RyGBundle\Entity\Edition $edition = null)
     {

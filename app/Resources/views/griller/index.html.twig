@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Grillers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Photo</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for griller in grillers %}
+            <tr>
+                <td><a href="{{ path('griller_show', { 'id': griller.id }) }}">{{ griller.id }}</a></td>
+                <td>{{ griller.name }}</td>
+                <td>{{ griller.photo }}</td>
+                <td>{{ griller.email }}</td>
+                <td>{{ griller.phone }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('griller_show', { 'id': griller.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('griller_edit', { 'id': griller.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('griller_new') }}">Create a new griller</a>
+        </li>
+    </ul>
+{% endblock %}

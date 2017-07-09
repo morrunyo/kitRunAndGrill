@@ -14,6 +14,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Edition
 {
     /**
+     * @ORM\OneToMany(targetEntity="Griller", mappedBy="edition")
+     */
+    private $grillers;
+    
+    /**
      * @ORM\OneToMany(targetEntity="Runner", mappedBy="edition")
      */
     private $runners;
@@ -21,6 +26,7 @@ class Edition
     public function __construct()
     {
         $this->runners = new ArrayCollection();
+        $this->grillers = new ArrayCollection();
     }
     
     /**
@@ -168,5 +174,39 @@ class Edition
     public function getRunners()
     {
         return $this->runners;
+    }
+
+    /**
+     * Add griller
+     *
+     * @param \RyGBundle\Entity\Griller $griller
+     *
+     * @return Edition
+     */
+    public function addGriller(\RyGBundle\Entity\Griller $griller)
+    {
+        $this->grillers[] = $griller;
+
+        return $this;
+    }
+
+    /**
+     * Remove griller
+     *
+     * @param \RyGBundle\Entity\Griller $griller
+     */
+    public function removeGriller(\RyGBundle\Entity\Griller $griller)
+    {
+        $this->grillers->removeElement($griller);
+    }
+
+    /**
+     * Get grillers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGrillers()
+    {
+        return $this->grillers;
     }
 }

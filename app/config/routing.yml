@@ -1,3 +1,11 @@
+ry_g_edition:
+    resource: "@RyGBundle/Controller/EditionController.php"
+    type:     annotation
+
+ry_g:
+    resource: "@RyGBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

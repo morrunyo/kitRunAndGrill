@@ -1,0 +1,3 @@
+ry_g_homepage:
+    path:     /
+    defaults: { _controller: RyGBundle:Default:index }

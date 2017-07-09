@@ -10,6 +10,8 @@ grill_activate:
     path: /grill/activate/{id}
     defaults: { _controller: GrillBundle:Grill:activate }
     
+    
+    
 griller_edit:
     path: /griller/edit/{id}
     defaults: { _controller: GrillBundle:Griller:edit }
@@ -26,3 +28,23 @@ griller_restart:
 griller_index:
     path: /griller/index
     defaults: { _controller: GrillBundle:Griller:index }
+    
+griller_addphoto:
+    path: /griller/addphoto/{id}
+    defaults: { _controller: GrillBundle:Griller:addPhoto }
+
+griller_createphoto:
+    path: /griller/createphoto/{id}
+    defaults: { _controller: GrillBundle:Griller:createPhoto }
+    methods: [POST,PUT]
+
+
+
+image_add:
+    path: /image/add/{id}
+    defaults: { _controller: GrillBundle:Image:add }
+    
+image_create:
+    path: /image/create/{id}
+    defaults: { _controller: GrillBundle:Image:create }
+    methods: [POST,PUT]

@@ -102,4 +102,21 @@ class GrillerController extends Controller
         }
         return $this->redirectToRoute('griller_index');
     }
+    
+/*    public Function addPhotoAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $griller = $this->getDoctrine()->getRepository('GrillBundle:Griller')->find($id);
+        $form = $this->createAddPhotoForm($griller);
+        
+        return $this->render('GrillBundle:Griller:addPhoto.html.twig', array('form' => $form->createView()));
+    }
+    
+    private function createAddPhotoForm(Griller $entity)
+    {
+                                  
+        $form = $this->createForm(GrillerType::class, $entity,array('action' => $this->generateUrl('griller_createphoto', array('id' => $entity->getid(), 'method' => 'PUT', 'is_add_photo_form' => true ))));
+        
+        return $form;
+    }*/
 }

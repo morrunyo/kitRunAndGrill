@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Griller
 {
      /**
-     * @ORM\OneToMany(targetEntity="image", mappedBy="Griller")
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="Griller")
      */
     protected $images;
 

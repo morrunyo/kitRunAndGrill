@@ -19,7 +19,7 @@ class Edition
 
     public function __construct()
     {
-        $this->runners = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
     
     /**
@@ -134,38 +134,5 @@ class Edition
     {
         return $this->isActive;
     }
-
-    /**
-     * Add runner
-     *
-     * @param \RyGBundle\Entity\Runner $runner
-     *
-     * @return Edition
-     */
-    public function addRunner(\RyGBundle\Entity\Runner $runner)
-    {
-        $this->runners[] = $runner;
-
-        return $this;
-    }
-
-    /**
-     * Remove runner
-     *
-     * @param \RyGBundle\Entity\Runner $runner
-     */
-    public function removeRunner(\RyGBundle\Entity\Runner $runner)
-    {
-        $this->runners->removeElement($runner);
-    }
-
-    /**
-     * Get runners
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRunners()
-    {
-        return $this->runners;
-    }
 }
+

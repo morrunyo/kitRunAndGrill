@@ -13,7 +13,7 @@ class RunnerType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('number')->add('finishedAt')->add('edition');
+        $builder->add('name')->add('number')->add('finishedAt');
     }
     
     /**

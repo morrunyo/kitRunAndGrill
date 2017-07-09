@@ -5,7 +5,9 @@ namespace RyGBundle\Controller;
 use RyGBundle\Entity\Runner;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use \DateTime;
 
 /**
  * Runner controller.
@@ -45,6 +47,8 @@ class RunnerController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $edition = $em->getRepository('RyGBundle:Edition')->findOneBy(array('isActive' => true));
+            $runner->setEdition($edition);
             $em->persist($runner);
             $em->flush();
 
@@ -132,5 +136,21 @@ class RunnerController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    
+    /**
+     * Chrono Runner
+     *
+     * @Route("/{id}/chrono", name="runner_chrono")
+     * 
+     */
+    public function chronoAction(Runner $runner)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $runner->setFinishedAt(new DateTime());
+        $em->persist($runner);
+        $em->flush();
+        
+        return $this->redirectToRoute('runner_index');
     }
 }

@@ -9,6 +9,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Photo</th>
+                <th>Photo Image</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Actions</th>
@@ -20,6 +21,7 @@
                 <td><a href="{{ path('griller_show', { 'id': griller.id }) }}">{{ griller.id }}</a></td>
                 <td>{{ griller.name }}</td>
                 <td>{{ griller.photo }}</td>
+                <td><img src="{{asset('uploads/photos/' ~ griller.photo)}}" width=200 /></td>
                 <td>{{ griller.email }}</td>
                 <td>{{ griller.phone }}</td>
                 <td>

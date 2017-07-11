@@ -5,6 +5,7 @@ namespace RyGBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class GrillerType extends AbstractType
 {
@@ -13,7 +14,7 @@ class GrillerType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('photo')->add('email')->add('phone')->add('edition');
+        $builder->add('name')->add('photo',FileType::class)->add('email')->add('phone');
     }
     
     /**

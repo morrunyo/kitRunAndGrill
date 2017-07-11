@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Image
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Griller", inversedBy="images")
+     * @ORM\ManyToOne(targetEntity="RyGBundle\Entity\Griller", inversedBy="images")
      * @ORM\JoinColumn(name="griller_id", referencedColumnName="id")
      */
     private $griller;
@@ -28,11 +28,11 @@ class Image
     private $id;
 
     /**
-     * @var string
+     * @var array
      *
-     * @ORM\Column(name="filename", type="string", length=255, nullable=true)
+     * @ORM\Column(name="filenames", type="array", length=255, nullable=true)
      */
-    private $filename;
+    private $filenames;
 
     /**
      * @var \DateTime
@@ -99,5 +99,28 @@ class Image
     {
         return $this->createdAt;
     }
-}
 
+    /**
+     * Set griller
+     *
+     * @param \GalleryBundle\Entity\Griller $griller
+     *
+     * @return Image
+     */
+    public function setGriller(\GalleryBundle\Entity\Griller $griller = null)
+    {
+        $this->griller = $griller;
+
+        return $this;
+    }
+
+    /**
+     * Get griller
+     *
+     * @return \GalleryBundle\Entity\Griller
+     */
+    public function getGriller()
+    {
+        return $this->griller;
+    }
+}

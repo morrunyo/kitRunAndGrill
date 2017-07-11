@@ -28,11 +28,11 @@ class Image
     private $id;
 
     /**
-     * @var string
+     * @var array
      *
-     * @ORM\Column(name="filename", type="string", length=255, nullable=true)
+     * @ORM\Column(name="filenames", type="array", length=255, nullable=true)
      */
-    private $filename;
+    private $filenames;
 
     /**
      * @var \DateTime
@@ -122,5 +122,29 @@ class Image
     public function getGriller()
     {
         return $this->griller;
+    }
+
+    /**
+     * Set filenames
+     *
+     * @param array $filenames
+     *
+     * @return Image
+     */
+    public function setFilenames($filenames)
+    {
+        $this->filenames = $filenames;
+
+        return $this;
+    }
+
+    /**
+     * Get filenames
+     *
+     * @return array
+     */
+    public function getFilenames()
+    {
+        return $this->filenames;
     }
 }

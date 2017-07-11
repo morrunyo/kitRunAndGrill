@@ -3,6 +3,7 @@
 namespace RyGBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use GalleryBundle\Entity\Image;
 
 /**
  * Griller
@@ -12,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Griller
 {
+    /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="griller")
+     */
+    private $images;
+    
     /**
      * @ORM\ManyToOne(targetEntity="Edition", inversedBy="grillers")
      * @ORM\JoinColumn(name="edition_id", referencedColumnName="id")
@@ -161,5 +167,28 @@ class Griller
     {
         return $this->phone;
     }
-}
 
+    /**
+     * Set edition
+     *
+     * @param \RyGBundle\Entity\Edition $edition
+     *
+     * @return Griller
+     */
+    public function setEdition(\RyGBundle\Entity\Edition $edition = null)
+    {
+        $this->edition = $edition;
+
+        return $this;
+    }
+
+    /**
+     * Get edition
+     *
+     * @return \RyGBundle\Entity\Edition
+     */
+    public function getEdition()
+    {
+        return $this->edition;
+    }
+}

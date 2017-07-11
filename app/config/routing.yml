@@ -1,3 +1,11 @@
+gallery_image:
+    resource: "@GalleryBundle/Controller/ImageController.php"
+    type:     annotation
+
+gallery:
+    resource: "@GalleryBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ry_g_griller:
     resource: "@RyGBundle/Controller/GrillerController.php"
     type:     annotation

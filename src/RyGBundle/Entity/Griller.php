@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Griller
 {
     /**
+     * @ORM\OneToMany(targetEntity="GalleryBundle\Entity\Image", mappedBy="griller")
+     */
+    private $images;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Edition", inversedBy="grillers")
      * @ORM\JoinColumn(name="edition_id", referencedColumnName="id")
      */
@@ -184,5 +189,46 @@ class Griller
     public function getEdition()
     {
         return $this->edition;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add image
+     *
+     * @param \RyGBundle\Entity\Image $image
+     *
+     * @return Griller
+     */
+    public function addImage(\RyGBundle\Entity\Image $image)
+    {
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param \RyGBundle\Entity\Image $image
+     */
+    public function removeImage(\RyGBundle\Entity\Image $image)
+    {
+        $this->images->removeElement($image);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }

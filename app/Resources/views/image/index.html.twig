@@ -35,7 +35,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('image_new') }}">Create a new image</a>
+            <a href="{{ path('image_new', parameters = {'idgriller' :  app.request.attributes.get('_route_params')['idgriller']}) }}">Create a new image</a>
         </li>
     </ul>
 {% endblock %}

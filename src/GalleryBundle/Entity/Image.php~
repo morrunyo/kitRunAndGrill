@@ -53,30 +53,6 @@ class Image
     }
 
     /**
-     * Set filename
-     *
-     * @param string $filename
-     *
-     * @return Image
-     */
-    public function setFilename($filename)
-    {
-        $this->filename = $filename;
-
-        return $this;
-    }
-
-    /**
-     * Get filename
-     *
-     * @return string
-     */
-    public function getFilename()
-    {
-        return $this->filename;
-    }
-
-    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -122,5 +98,29 @@ class Image
     public function getGriller()
     {
         return $this->griller;
+    }
+
+    /**
+     * Set filenames
+     *
+     * @param array $filenames
+     *
+     * @return Image
+     */
+    public function setFilenames($filenames)
+    {
+        $this->filenames = $filenames;
+
+        return $this;
+    }
+
+    /**
+     * Get filenames
+     *
+     * @return array
+     */
+    public function getFilenames()
+    {
+        return $this->filenames;
     }
 }

@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Griller
  *
- * @ORM\Table(name="griller")
+ * @ORM\Table(name="grillers")
  * @ORM\Entity(repositoryClass="RyGBundle\Repository\GrillerRepository")
  */
 class Griller
@@ -202,11 +202,11 @@ class Griller
     /**
      * Add image
      *
-     * @param \RyGBundle\Entity\Image $image
+     * @param \GalleryBundle\Entity\Image $image
      *
      * @return Griller
      */
-    public function addImage(\RyGBundle\Entity\Image $image)
+    public function addImage(\GalleryBundle\Entity\Image $image)
     {
         $this->images[] = $image;
 
@@ -216,9 +216,9 @@ class Griller
     /**
      * Remove image
      *
-     * @param \RyGBundle\Entity\Image $image
+     * @param \GalleryBundle\Entity\Image $image
      */
-    public function removeImage(\RyGBundle\Entity\Image $image)
+    public function removeImage(\GalleryBundle\Entity\Image $image)
     {
         $this->images->removeElement($image);
     }

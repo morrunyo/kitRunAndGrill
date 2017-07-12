@@ -10,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('image_index') }}">Back to the list</a>
+            <a href="{{ path('image_index', parameters = {'idgriller' :  app.request.attributes.get('_route_params')['idgriller']}) }}">Back to the list</a>
         </li>
     </ul>
 {% endblock %}

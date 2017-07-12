@@ -5,12 +5,14 @@ namespace GalleryBundle\Controller;
 use GalleryBundle\Entity\Image;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Image controller.
  *
- * @Route("image")
+ * @Route("griller/{idgriller}/image")
  */
 class ImageController extends Controller
 {
@@ -37,7 +39,7 @@ class ImageController extends Controller
      * @Route("/new", name="image_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $idgriller)
     {
         $image = new Image();
         $form = $this->createForm('GalleryBundle\Form\ImageType', $image);
@@ -45,10 +47,24 @@ class ImageController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $griller = $em->getRepository('RyGBundle:Griller')->find($idgriller);
+            $image->setGriller($griller);
+            $image->setCreatedAt(new \DateTime());
+            
+            // Almacenar foto
+            $arrayAuxiliar = new ArrayCollection();
+            foreach ($image->getFilenames() as $file)
+            {
+                 $fileName = md5(uniqid()).'.'.$file->guessExtension();
+                 $file->move($this->getParameter('gallery_directory'),$fileName);
+                 $arrayAuxiliar->add($fileName);
+            }
+            $image->setFilenames($arrayAuxiliar);
+            
             $em->persist($image);
             $em->flush();
 
-            return $this->redirectToRoute('image_show', array('id' => $image->getId()));
+            return $this->redirectToRoute('image_show', array('id' => $image->getId(), 'idgriller' => $idgriller));
         }
 
         return $this->render('image/new.html.twig', array(

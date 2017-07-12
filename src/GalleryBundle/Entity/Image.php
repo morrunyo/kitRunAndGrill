@@ -53,30 +53,6 @@ class Image
     }
 
     /**
-     * Set filename
-     *
-     * @param string $filename
-     *
-     * @return Image
-     */
-    public function setFilename($filename)
-    {
-        $this->filename = $filename;
-
-        return $this;
-    }
-
-    /**
-     * Get filename
-     *
-     * @return string
-     */
-    public function getFilename()
-    {
-        return $this->filename;
-    }
-
-    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -103,11 +79,11 @@ class Image
     /**
      * Set griller
      *
-     * @param \GalleryBundle\Entity\Griller $griller
+     * @param \RyGBundle\Entity\Griller $griller
      *
      * @return Image
      */
-    public function setGriller(\GalleryBundle\Entity\Griller $griller = null)
+    public function setGriller(\RyGBundle\Entity\Griller $griller = null)
     {
         $this->griller = $griller;
 
@@ -117,7 +93,7 @@ class Image
     /**
      * Get griller
      *
-     * @return \GalleryBundle\Entity\Griller
+     * @return \RyGBundle\Entity\Griller
      */
     public function getGriller()
     {

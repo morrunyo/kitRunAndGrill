@@ -52,14 +52,15 @@ class ImageController extends Controller
             $image->setCreatedAt(new \DateTime());
             
             // Almacenar foto
-            $arrayAuxiliar = new ArrayCollection();
+            $cadenaAuxiliar = "";
             foreach ($image->getFilenames() as $file)
             {
                  $fileName = md5(uniqid()).'.'.$file->guessExtension();
                  $file->move($this->getParameter('gallery_directory'),$fileName);
-                 $arrayAuxiliar->add($fileName);
+                 $cadenaAuxiliar = $cadenaAuxiliar . " " . $fileName;
             }
-            $image->setFilenames($arrayAuxiliar);
+            
+            $image->setFilenames($cadenaAuxiliar);
             
             $em->persist($image);
             $em->flush();
@@ -144,7 +145,7 @@ class ImageController extends Controller
     private function createDeleteForm(Image $image)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('image_delete', array('id' => $image->getId())))
+            ->setAction($this->generateUrl('image_delete', array('id' => $image->getId(), 'idgriller' => $image->getGriller()->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

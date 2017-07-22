@@ -11,7 +11,7 @@
             </tr>
             <tr>
                 <th>Filename</th>
-                <td>{{ image.filename }}</td>
+                <td>{{ image.filenames }}</td>
             </tr>
             <tr>
                 <th>Createdat</th>
@@ -22,10 +22,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('image_index') }}">Back to the list</a>
+            <a href="{{ path('image_index', parameters = {'idgriller' :  app.request.attributes.get('_route_params')['idgriller']}) }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('image_edit', { 'id': image.id }) }}">Edit</a>
+            <a href="{{ path('image_edit', { 'id': image.id, 'idgriller' :  app.request.attributes.get('_route_params')['idgriller']}) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

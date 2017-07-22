@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Filename</th>
+                <th>Images</th>
                 <th>Createdat</th>
                 <th>Actions</th>
             </tr>
@@ -15,16 +16,23 @@
         <tbody>
         {% for image in images %}
             <tr>
-                <td><a href="{{ path('image_show', { 'id': image.id }) }}">{{ image.id }}</a></td>
-                <td>{{ image.filename }}</td>
+                <td><a href="{{ path('image_show', { 'id': image.id, 'idgriller' :  app.request.attributes.get('_route_params')['idgriller'] }) }}">{{ image.id }}</a></td>
+                <td>{{ image.filenames }}</td>
+                <td>
+                    {% for filename in image.filenames|split(' ') %}
+                    {% if filename|length > 0 %}
+                    <img src="{{asset('uploads/gallery/' ~ filename)}}" width=200 />
+                    {% endif %}
+                    {% endfor %}            
+                </td>
                 <td>{% if image.createdAt %}{{ image.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('image_show', { 'id': image.id }) }}">show</a>
+                            <a href="{{ path('image_show', { 'id': image.id,'idgriller' :  app.request.attributes.get('_route_params')['idgriller'] }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('image_edit', { 'id': image.id }) }}">edit</a>
+                            <a href="{{ path('image_edit', { 'id': image.id,'idgriller' :  app.request.attributes.get('_route_params')['idgriller'] }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

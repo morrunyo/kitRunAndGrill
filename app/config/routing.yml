@@ -1,3 +1,7 @@
+ry_g_place:
+    resource: "@RyGBundle/Controller/PlaceController.php"
+    type:     annotation
+
 gallery_image:
     resource: "@GalleryBundle/Controller/ImageController.php"
     type:     annotation

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Runners list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Finishedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for runner in runners %}
+            <tr>
+                <td><a href="{{ path('runner_show', { 'id': runner.id }) }}">{{ runner.id }}</a></td>
+                <td>{{ runner.name }}</td>
+                <td>{{ runner.number }}</td>
+                <td>{% if runner.finishedAt %}{{ runner.finishedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('runner_show', { 'id': runner.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('runner_edit', { 'id': runner.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('runner_chrono', { 'id': runner.id }) }}">Chrono</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('runner_new') }}">Create a new runner</a>
+        </li>
+    </ul>
+{% endblock %}

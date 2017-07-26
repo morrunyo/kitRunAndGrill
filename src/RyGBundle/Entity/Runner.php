@@ -154,4 +154,38 @@ class Runner
     {
         return $this->edition;
     }
+    
+        /**
+     * Calculate chrono
+     *
+     * @return \DateInterval
+     */
+    public function chrono()
+    {
+        if ($this->finishedAt){
+            return $this->edition->getStartedAt()->diff($this->finishedAt);
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
+    /**
+     * Calculate chrono in String format
+     *
+     * @return string
+     */
+    public function chronoString()
+    {
+        $interval = $this->chrono();
+        if ($interval <> null)
+        {
+            return $interval->format('%H:%I:%S');    
+        }
+        else
+        {
+            return "";
+        }
+    }
 }

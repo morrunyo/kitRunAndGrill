@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use \DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Runner controller.
@@ -25,11 +26,34 @@ class RunnerController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        
+        $editionActive = $em->getRepository('RyGBundle:Edition')->findOneByIsActive(true);
 
-        $runners = $em->getRepository('RyGBundle:Runner')->findAll();
-
+        //$runners = $em->getRepository('RyGBundle:Runner')->findAll();
+        $runners = $editionActive->getRunners();
+        
         return $this->render('runner/index.html.twig', array(
-            'runners' => $runners,
+            'runners' => $runners, 'race' => $editionActive,
+        ));
+    }
+    
+    /**
+     * Lists all runner entities.
+     *
+     * @Route("/results", name="runner_results")
+     * @Method("GET")
+     */
+    public function resultsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $editionActive = $em->getRepository('RyGBundle:Edition')->findOneByIsActive(true);
+
+        //$runners = $em->getRepository('RyGBundle:Runner')->findAll();
+        $runners = $em->getRepository('RyGBundle:Runner')->findBy(array('edition' => $editionActive), array('finishedAt' => 'ASC'));
+        
+        return $this->render('runner/results.html.twig', array(
+            'runners' => $runners, 'race' => $editionActive,
         ));
     }
 

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Place
  *
- * @ORM\Table(name="place")
+ * @ORM\Table(name="places")
  * @ORM\Entity(repositoryClass="RyGBundle\Repository\PlaceRepository")
  */
 class Place

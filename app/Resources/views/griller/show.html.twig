@@ -1,44 +1,34 @@
-{% extends 'base.html.twig' %}
+{% extends('layout.html.twig') %}
 
 {% block body %}
-    <h1>Griller</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ griller.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ griller.name }}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td>{{ griller.photo }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ griller.email }}</td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{ griller.phone }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('griller_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('griller_edit', { 'id': griller.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+<div class="container">
+<div class="col-md-12">
+<div class="table-responsive">
+<table class="table table-striped table-hover">
+    <tr>
+        <td align="center"><img src="{{asset('uploads/photos/kitlogo.png')}}" width=200 /></td>
+    </tr>
+    <tr>
+        <td align="center">{{griller.name}}</td>
+    </tr>
+    <tr>
+        <td align="center"><img src="{{asset('uploads/photos/' ~ griller.photo)}}" width=200 /></td>
+    </tr>
+    <tr>
+        <td class="actions" align="center"><a href="{{ path('place_index') }}" class="btn btn-sn btn-primary">Places</a></td>
+    </tr>
+    <tr>
+        <td class="actions" align="center"><a href="{{ path('runner_results') }}" class="btn btn-sn btn-info">Race Results</a></td>
+    </tr>
+    <tr>
+        <td class="actions" align="center"><a href="{{ path('griller_edit',{ 'id': griller.id }) }}" class="btn btn-sn btn-warning">Edit Profile</a></td>
+    </tr>
+    <tr>
+        <td class="actions" align="center"><a href="{{ path('image_new',{ 'idgriller': griller.id }) }}" class="btn btn-sn btn-success">Add photos</a></td>
+    </tr>
+</table>
+</div>
+</div>
+</div>
+{%endblock %}

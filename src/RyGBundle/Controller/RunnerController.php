@@ -50,7 +50,11 @@ class RunnerController extends Controller
         $editionActive = $em->getRepository('RyGBundle:Edition')->findOneByIsActive(true);
 
         //$runners = $em->getRepository('RyGBundle:Runner')->findAll();
-        $runners = $em->getRepository('RyGBundle:Runner')->findBy(array('edition' => $editionActive), array('finishedAt' => 'ASC'));
+        $repo = $em->getRepository('RyGBundle:Runner');
+        $editionid = $editionActive->getId();
+        $query = $repo->createquerybuilder('t')->where('t.edition = :editionActive')->andwhere('t.finishedAt IS NOT NULL')->setparameter('editionActive',$editionActive)->getQuery();
+        $runners = $query->getResult();
+        //$runners = $em->getRepository('RyGBundle:Runner')->findBy(array('edition' => $editionActive), array('finishedAt' => 'ASC'));
         
         return $this->render('runner/results.html.twig', array(
             'runners' => $runners, 'race' => $editionActive,

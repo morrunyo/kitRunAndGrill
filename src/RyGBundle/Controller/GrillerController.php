@@ -109,6 +109,7 @@ class GrillerController extends Controller
     public function editAction(Request $request, Griller $griller)
     {
         $deleteForm = $this->createDeleteForm($griller);
+        $photoOriginal = $griller->getPhoto();
         $griller->setPhoto(null);
         $editForm = $this->createForm('RyGBundle\Form\GrillerType', $griller);
         $editForm->handleRequest($request);
@@ -116,10 +117,15 @@ class GrillerController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             // Almacenar foto
             $file = $griller->getPhoto();
-            $fileName = $griller->getEdition()->getId().'-'.$griller->getId().'.'.$file->guessExtension();
-            $file->move($this->getParameter('photos_directory'),$fileName);
-            $griller->setPhoto($fileName);
-            
+            if (!is_null($file))
+            {
+                $fileName = $griller->getEdition()->getId().'-'.$griller->getId().'.'.$file->guessExtension();
+                $file->move($this->getParameter('photos_directory'),$fileName);
+                $griller->setPhoto($fileName);
+            }
+            else{//Dejo la foto que tenia$grilleroriginal = $em->getRepository('RyGBundle:Griller')->findOneById($griller->getId());
+                $griller->setPhoto($photoOriginal);
+            }
             
             $this->getDoctrine()->getManager()->flush();
 

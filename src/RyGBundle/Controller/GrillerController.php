@@ -128,7 +128,7 @@ class GrillerController extends Controller
 
         return $this->render('griller/edit.html.twig', array(
             'griller' => $griller,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

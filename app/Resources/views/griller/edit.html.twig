@@ -1,21 +1,48 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1>Griller edit</h1>
+    {{ parent() }}
+	<div class="main container">
+		<div class="row well">
+			<div class="col-md-6">
+				<div class="page-header">
+					<h2>Edit griller</h2>
+				</div>
+				{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+				    <h4 class="text-danger">{{ form_errors(form) }}</h4>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+					<fieldset>
+					    <div class="form-group">
+					        {{ form_label(form.name) }}
+					        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+					        <span class="text-danger">{{ form_errors(form.name) }}</span>
+					    </div>
+					    <div class="form-group">
+					        {{ form_label(form.phone) }}
+					        {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+					        <span class="text-danger">{{ form_errors(form.phone) }}</span>
+					    </div>
+					    <div class="form-group">
+					        {{ form_label(form.instagram) }}
+					        {{ form_widget(form.instagram, {'attr': {'class': 'form-control'}}) }}
+					        <span class="text-danger">{{ form_errors(form.instagram) }}</span>
+					    </div>
+					    <div class="form-group">
+					        {{ form_label(form.team) }}
+					        {{ form_widget(form.team, {'attr': {'class': 'form-control'}}) }}
+					        <span class="text-danger">{{ form_errors(form.team) }}</span>
+					    </div>
+					    <div class="form-group">
+					        {{ form_row(form.photo) }}
+					    </div>
+					</fieldset>
 
-    <ul>
-        <li>
-            <a href="{{ path('griller_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+				    <p>
+				       <input type="submit" value="Edit" />
+				    </p>
+
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
 {% endblock %}

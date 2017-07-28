@@ -1,6 +1,26 @@
-@media (max-width: 768px) {
-html, body {
-width: auto !important;
-overflow-x: hidden !important;
-}
+@media(max-width:1024px) {
+  body {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  #heading > .container {
+    padding: 0 15px;
+  }
+
+  #main-content > .container {
+    padding: 0 15px;
+  }
+
+  #footer > .container {
+    padding: 0 15px;
+  }
+  #heading h1 {
+    font-size: 50px;
+    line-height: 55px;
+  }
+  #heading h4 {
+    font-size: 20px;
+    line-height: 25px;
+  }
 }

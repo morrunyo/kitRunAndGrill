@@ -21,7 +21,7 @@
                 <td>
                     {% for filename in image.filenames|split(' ') %}
                     {% if filename|length > 0 %}
-                    <img src="{{asset('uploads/gallery/' ~ filename)}}" width=200 />
+                    <img src="{{asset('uploads/gallery/' ~ filename)}}" width=300 />
                     {% endif %}
                     {% endfor %}            
                 </td>

@@ -1,16 +1,28 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1>Image creation</h1>
+    {{ parent() }}
+	<div class="main container">
+		<div class="row well">
+			<div class="col-md-6">
+				<div class="page-header">
+					<h2>Add photos</h2>
+				</div>
+				{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+				    <h4 class="text-danger">{{ form_errors(form) }}</h4>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+					<fieldset>
+					    <div class="form-group">
+					        {{ form_row(form.filenames) }}
+					    </div>
+					</fieldset>
 
-    <ul>
-        <li>
-            <a href="{{ path('image_index', parameters = {'idgriller' :  app.request.attributes.get('_route_params')['idgriller']}) }}">Back to the list</a>
-        </li>
-    </ul>
+				    <p>
+				        <input type="submit" value="Add" class="btn btn-sn btn-success" />
+				    </p>
+
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
 {% endblock %}

@@ -129,7 +129,7 @@ class GrillerController extends Controller
             
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('griller_edit', array('id' => $griller->getId()));
+            return $this->redirectToRoute('griller_show', array('id' => $griller->getId()));
         }
 
         return $this->render('griller/edit.html.twig', array(

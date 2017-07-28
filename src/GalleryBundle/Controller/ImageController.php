@@ -65,7 +65,7 @@ class ImageController extends Controller
             $em->persist($image);
             $em->flush();
 
-            return $this->redirectToRoute('image_show', array('id' => $image->getId(), 'idgriller' => $idgriller));
+            return $this->redirectToRoute('griller_show', array('id' => $idgriller));
         }
 
         return $this->render('image/new.html.twig', array(

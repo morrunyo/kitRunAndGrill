@@ -39,6 +39,13 @@ class Griller
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="team", type="string", length=255, nullable=true)
+     */
+    private $team;
 
     /**
      * @var string
@@ -50,9 +57,9 @@ class Griller
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @ORM\Column(name="instagram", type="string", length=255, nullable=true)
      */
-    private $email;
+    private $instagram;
 
     /**
      * @var int
@@ -118,30 +125,6 @@ class Griller
     public function getPhoto()
     {
         return $this->photo;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Griller
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**
@@ -231,5 +214,53 @@ class Griller
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set team
+     *
+     * @param string $team
+     *
+     * @return Griller
+     */
+    public function setTeam($team)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * Get team
+     *
+     * @return string
+     */
+    public function getTeam()
+    {
+        return $this->team;
+    }
+
+    /**
+     * Set instagram
+     *
+     * @param string $instagram
+     *
+     * @return Griller
+     */
+    public function setInstagram($instagram)
+    {
+        $this->instagram = $instagram;
+
+        return $this;
+    }
+
+    /**
+     * Get instagram
+     *
+     * @return string
+     */
+    public function getInstagram()
+    {
+        return $this->instagram;
     }
 }

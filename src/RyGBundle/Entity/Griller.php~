@@ -39,6 +39,13 @@ class Griller
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="team", type="string", length=255, nullable=true)
+     */
+    private $team;
 
     /**
      * @var string
@@ -50,9 +57,9 @@ class Griller
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * @ORM\Column(name="instagram", type="string", length=255, nullable=true)
      */
-    private $email;
+    private $instagram;
 
     /**
      * @var int
@@ -121,30 +128,6 @@ class Griller
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Griller
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
      * Set phone
      *
      * @param integer $phone
@@ -202,11 +185,11 @@ class Griller
     /**
      * Add image
      *
-     * @param \RyGBundle\Entity\Image $image
+     * @param \GalleryBundle\Entity\Image $image
      *
      * @return Griller
      */
-    public function addImage(\RyGBundle\Entity\Image $image)
+    public function addImage(\GalleryBundle\Entity\Image $image)
     {
         $this->images[] = $image;
 
@@ -216,9 +199,9 @@ class Griller
     /**
      * Remove image
      *
-     * @param \RyGBundle\Entity\Image $image
+     * @param \GalleryBundle\Entity\Image $image
      */
-    public function removeImage(\RyGBundle\Entity\Image $image)
+    public function removeImage(\GalleryBundle\Entity\Image $image)
     {
         $this->images->removeElement($image);
     }
@@ -231,5 +214,29 @@ class Griller
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set team
+     *
+     * @param string $team
+     *
+     * @return Griller
+     */
+    public function setTeam($team)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * Get team
+     *
+     * @return string
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }

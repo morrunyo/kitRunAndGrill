@@ -81,6 +81,24 @@ class GrillerController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+    
+        /**
+     * Finds and displays a griller entity.
+     *
+     * @Route("/{id}/team", name="griller_team")
+     * @Method("GET")
+     */
+    public function teamAction(Griller $griller)
+    {
+        $team = $griller->getTeam();
+        $em = $this->getDoctrine()->getManager();
+        $grillers = $em->getRepository('RyGBundle:Griller')->findByTeam($team);
+        
+        return $this->render('griller/team.html.twig', array(
+            'grillers' => $grillers,
+            'team' => $team,
+        ));
+    }
 
     /**
      * Displays a form to edit an existing griller entity.

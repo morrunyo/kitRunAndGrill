@@ -12,7 +12,7 @@
     {% for image in images %}
         {% for filename in image.filenames|split(' ') %}
             {% if filename|length > 0 %}
-               <tr><td align="center"><img src="{{asset('uploads/gallery/' ~ filename)}}" width=300 /></td></tr><br />
+               <tr><td align="center"><img src="{{asset('uploads/gallery/' ~ filename)}}" width=300 /></td></tr>
             {% endif %}
         {% endfor %} 
     {% endfor %}

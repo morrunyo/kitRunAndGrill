@@ -1,49 +1,23 @@
-{% extends 'base.html.twig' %}
+{% extends('layout.html.twig') %}
 
 {% block body %}
-    <h1>Images list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Filename</th>
-                <th>Images</th>
-                <th>Createdat</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for image in images %}
-            <tr>
-                <td><a href="{{ path('image_show', { 'id': image.id, 'idgriller' :  app.request.attributes.get('_route_params')['idgriller'] }) }}">{{ image.id }}</a></td>
-                <td>{{ image.filenames }}</td>
-                <td>
-                    {% for filename in image.filenames|split(' ') %}
-                    {% if filename|length > 0 %}
-                    <img src="{{asset('uploads/gallery/' ~ filename)}}" width=300 />
-                    {% endif %}
-                    {% endfor %}            
-                </td>
-                <td>{% if image.createdAt %}{{ image.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('image_show', { 'id': image.id,'idgriller' :  app.request.attributes.get('_route_params')['idgriller'] }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('image_edit', { 'id': image.id,'idgriller' :  app.request.attributes.get('_route_params')['idgriller'] }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('image_new', parameters = {'idgriller' :  app.request.attributes.get('_route_params')['idgriller']}) }}">Create a new image</a>
-        </li>
-    </ul>
-{% endblock %}
+	<div class="container">
+		<div class="">
+			<div class="page-header margin-none">
+				<h2 class="padding-none">Gallery<br /></h2>
+			</div>
+			<div class="table-responsive">
+<table class="table table-striped table-hover">
+    {% for image in images %}
+        {% for filename in image.filenames|split(' ') %}
+            {% if filename|length > 0 %}
+               <tr><td align="center"><img src="{{asset('uploads/gallery/' ~ filename)}}" width=300 /></td></tr><br />
+            {% endif %}
+        {% endfor %} 
+    {% endfor %}
+</table>
+</div>
+</div>
+</div>
+{%endblock %}

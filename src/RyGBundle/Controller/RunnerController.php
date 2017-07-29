@@ -52,7 +52,7 @@ class RunnerController extends Controller
         //$runners = $em->getRepository('RyGBundle:Runner')->findAll();
         $repo = $em->getRepository('RyGBundle:Runner');
         $editionid = $editionActive->getId();
-        $query = $repo->createquerybuilder('t')->where('t.edition = :editionActive')->andwhere('t.finishedAt IS NOT NULL')->setparameter('editionActive',$editionActive)->getQuery();
+        $query = $repo->createquerybuilder('t')->where('t.edition = :editionActive')->andwhere('t.finishedAt IS NOT NULL')->orderby('t.finishedAt','ASC')->setparameter('editionActive',$editionActive)->getQuery();
         $runners = $query->getResult();
         //$runners = $em->getRepository('RyGBundle:Runner')->findBy(array('edition' => $editionActive), array('finishedAt' => 'ASC'));
         
